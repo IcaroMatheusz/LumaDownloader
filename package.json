@@ -1,0 +1,64 @@
+{
+  "name": "luma-downloader",
+  "version": "2.8.0",
+  "description": "Luma Downloader desktop application",
+  "main": "electron/main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "build:backend": "powershell -ExecutionPolicy Bypass -File ./build-backend.ps1",
+    "portable": "npm run build:backend && electron-builder --dir",
+    "dist": "npm run build:backend && electron-builder --win nsis"
+  },
+  "devDependencies": {
+    "electron": "^38.2.0",
+    "electron-builder": "^26.0.12"
+  },
+  "build": {
+    "appId": "com.luma.downloader",
+    "productName": "Luma Downloader",
+    "npmRebuild": false,
+    "electronDist": "node_modules/electron/dist",
+    "directories": {
+      "output": "electron-dist"
+    },
+    "files": [
+      "electron/**/*",
+      "ui/**/*",
+      "assets/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "backend-dist/LumaBackend.exe",
+        "to": "backend/LumaBackend.exe"
+      },
+      {
+        "from": "assets/luma.ico",
+        "to": "luma.ico"
+      }
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "assets/luma.ico",
+      "artifactName": "Luma-Downloader-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Luma Downloader"
+    }
+  },
+  "dependencies": {
+    "lucide-static": "^1.57.0"
+  }
+}
+
