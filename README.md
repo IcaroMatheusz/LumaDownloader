@@ -1,7 +1,7 @@
 <div align="center">
   <img src="assets/luma.png" width="96" alt="Luma Downloader">
   <h1>Luma Downloader</h1>
-  <p>Uma biblioteca desktop para organizar downloads de vídeo, áudio e playlists.</p>
+  <p>Uma biblioteca desktop para organizar downloads de vídeos, áudios e playlists.</p>
   <p><strong>Windows · Electron · yt-dlp</strong></p>
 </div>
 
