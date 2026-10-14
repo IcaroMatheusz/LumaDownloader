@@ -23,15 +23,13 @@ Use o aplicativo somente para salvar conteúdo que você tem autorização para 
 - Pastas distintas para vídeos e áudios, notificações e ação para revelar o arquivo no Explorador.
 - Orientação para configurar o FFmpeg quando ele for necessário.
 
-## Instalar uma versão publicada
+## Instalação
 
-1. Abra a página **Releases** deste repositório.
-2. Baixe `Luma-Downloader-Setup-<versão>.exe`.
-3. Execute o instalador e siga as etapas na tela.
+Baixe o instalador disponibilizado pelo projeto e execute o arquivo `.exe`. Siga as etapas exibidas pelo instalador.
 
-O instalador é destinado ao Windows 64 bits. Builds sem assinatura digital podem ser bloqueados pelo Smart App Control ou exibir avisos do Windows. Publicar um arquivo no GitHub não o torna confiável para o Windows; distribuição ampla requer assinatura com certificado confiável. Consulte [Smart App Control: assinatura de código](https://learn.microsoft.com/en-us/windows/apps/develop/smart-app-control/code-signing-for-smart-app-control).
+O instalador é destinado ao Windows 64 bits. Builds sem assinatura digital podem ser bloqueados pelo Smart App Control ou exibir avisos do Windows. Para distribuição ampla, o instalador e os executáveis devem ser assinados com um certificado confiável. Consulte [Smart App Control: assinatura de código](https://learn.microsoft.com/en-us/windows/apps/develop/smart-app-control/code-signing-for-smart-app-control).
 
-Se a Release também oferecer uma versão portátil ZIP, extraia **todo o arquivo** para uma pasta e execute `Luma Downloader.exe` dentro dela. Não mova o executável para fora dessa pasta.
+Se houver uma versão portátil ZIP, extraia **todo o arquivo** para uma pasta e execute `Luma Downloader.exe` dentro dela. Não mova o executável para fora dessa pasta.
 
 ## Desenvolvimento no Windows
 
@@ -67,24 +65,6 @@ npm run portable
 ```
 
 A pasta `electron-dist/win-unpacked` contém o aplicativo e seus recursos. Para distribuir a versão portátil, compacte **todo o conteúdo** dessa pasta em um ZIP. Não distribua apenas o executável principal: o backend e os recursos Electron precisam permanecer ao lado dele.
-
-### Publicar uma Release no GitHub
-
-1. Atualize a versão em `package.json` e `package-lock.json`.
-2. Faça o commit dessas alterações na branch `main`.
-3. Crie uma tag para o commit, por exemplo `v2.8.0`:
-
-   ```powershell
-   git push origin main
-   git tag -a v2.8.0 -m "Luma Downloader 2.8.0"
-   git push origin v2.8.0
-   ```
-
-4. Gere o instalador usando `npm run dist`.
-5. No GitHub, abra **Releases** → **Draft a new release**, selecione a tag criada e anexe `electron-dist/Luma-Downloader-Setup-2.8.0.exe`.
-6. Revise as notas e publique a Release.
-
-As Releases e seus anexos são associados a uma tag do repositório. Veja a documentação oficial: [About releases](https://docs.github.com/en/repositories/releasing-projects-on-github/about-releases) e [Managing releases](https://docs.github.com/en/repositories/releasing-projects-on-github/managing-releases-in-a-repository).
 
 ## Estrutura
 
